@@ -1,0 +1,37 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var calculate = function(s) {
+    const stack = [1]
+    let sign = 1;
+
+    let sum =0
+    const n =s.length;
+    let i =0;
+    while( i < n){
+        if(s[i]===' '){
+            i++
+        }else if(s[i] === '+'){
+            sign = stack[stack.length-1]
+            i++
+        }else if(s[i] ==='-'){
+            sign = -stack[stack.length-1]
+            i++
+        }else if(s[i] ==='('){
+            stack.push(sign);
+            i++
+        }else if(s[i] ===')'){
+            stack.pop(sign)
+            i++
+        }else {
+            let num=0
+        while(i<n && !(isNaN(Number(s[i]))) && s[i] !==' '){
+            num = s[i].charCodeAt() - '0'.charCodeAt();
+            i++
+            }
+            sum+=sign*num
+        }
+    }
+    return sum
+};
