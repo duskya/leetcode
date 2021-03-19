@@ -1,0 +1,25 @@
+/**
+ * @param {number} big
+ * @param {number} medium
+ * @param {number} small
+ */
+var ParkingSystem = function(big, medium, small) {
+    this.big = big
+    this.medium = medium
+    this.small = small
+};
+
+ParkingSystem.prototype.addCar = function(carType) {
+    if(carType===1){
+        this.big--;
+        return this.big>=0?true:false
+    }else if(carType ===2){
+        this.medium--;
+        return this.medium>=0?true:false
+    }else if(carType ===3){
+        this.small--;
+        return this.small>=0?true:false
+    }
+    return false
+
+};
