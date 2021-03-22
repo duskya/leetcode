@@ -1,0 +1,31 @@
+/**
+ * @param {number} n - a positive integer
+ * @return {number}
+ */
+// var hammingWeight = function(n) {
+//     // console.log(n)
+//     const a = n.toString(2)
+//     // console.log(a)
+//     let num=0
+//     for(let i=0;i<a.length;i++){
+//         if(a[i]==1){
+//             num++
+//         }
+//     }
+//     return num
+// };
+var hammingWeight = function(n) {
+    let ret = 0;
+    for (let i = 0; i < 32; i++) {
+        console.log(n,'--',1<<i,'---',(n & (1 << i)))
+        //n=1011 && (0001 0000 =0001  1) =0001
+        //n=1011 && (0001 0001 =0010  2) =0010
+        //n=1011 && (0001 0010 =0100  4) =0000
+        //n=1011 && (0001 0011 =1000  8) =1000
+        //0001 0100 = 10000
+        if ((n & (1 << i)) !== 0) {
+            ret++;
+        }
+    }
+    return ret;
+};
