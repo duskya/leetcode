@@ -1,0 +1,27 @@
+
+var NestedIterator = function(nestedList) {
+    arrs =[];
+    const dfs = (nestedList) =>{
+        for(const nest of nestedList){
+            if(nest.isInteger()){
+                arrs.push(nest.getInteger())
+            }else{
+                dfs(nest.getList())
+            }
+        }
+    }
+    dfs(nestedList)
+
+};
+
+NestedIterator.prototype.hasNext = function() {
+    return arrs.length>0
+    
+};
+NestedIterator.prototype.next = function() {
+    
+    const arr= arrs[0];
+    // console.log(arrs,arr)
+    arrs = arrs.slice(1);
+    return arr;
+};
