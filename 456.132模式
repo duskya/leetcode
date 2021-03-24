@@ -1,0 +1,37 @@
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var find132pattern = function(nums) {
+    var len = nums.length
+    var max = -Number.MAX_SAFE_INTEGER
+    var  stack =[nums[len-1]]
+
+    for(let i = len-2;i>=0;i--){
+        if(nums[i]<max){
+            return true
+        }
+        while(stack.length  && nums[i] > stack[stack.length-1]){
+            max = stack[stack.length-1]
+            stack.pop()
+        }
+        if(nums[i]>max){
+            stack.push(nums[i])
+        }
+    }
+    return false
+
+    // for (let i = n - 2; i >= 0; --i) {
+    //     if (nums[i] < max_k) {
+    //         return true;
+    //     }
+    //     while (candidate_k.length && nums[i] > candidate_k[candidate_k.length - 1]) {
+    //         max_k = candidate_k[candidate_k.length - 1];
+    //         candidate_k.pop();
+    //     }
+    //     if (nums[i] > max_k) {
+    //         candidate_k.push(nums[i]);
+    //     }
+    // }
+    // return false;
+};
