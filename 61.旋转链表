@@ -1,0 +1,32 @@
+
+var rotateRight = function(head, k) {
+    if (k === 0 || !head || !head.next) {
+        return head;
+    }
+    let n = 1;
+    let cur = head;
+    console.log(cur,'cur')
+    while (cur.next) {
+        cur = cur.next;
+        n++;
+    }
+    console.log(cur,'cur')
+    let add = n - k % n;
+    console.log(add,'add')
+    if (add === n) {
+        return head;
+    }
+    console.log(head,'head')
+    cur.next = head;
+   
+    while (add) {
+        //  console.log(cur.next)
+        cur = cur.next;
+        add--;
+    }
+ 
+    const ret = cur.next;
+    // console.log(ret)
+    cur.next = null;
+    return ret;
+};
