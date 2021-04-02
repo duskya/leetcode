@@ -1,0 +1,30 @@
+/**
+ * @param {number} N
+ * @return {number}
+ */
+var clumsy = function(N) {
+    const stack = [N];
+    let sum =0
+    let a =0
+    let n = N-1
+    while(n>0){
+        // console.log(n)
+        if(a%4 == 0){
+            stack.push(stack.pop()*n)
+        }else if(a%4 == 1){
+            const num = stack.pop()
+            stack.push(num>0? Math.floor(num/n):Math.ceil(num/n))
+        }else if(a%4 == 2){
+            stack.push(n)
+        }else{
+            stack.push(-n)
+        }
+        // console.log(stack)
+        a++;
+        n--;
+    }
+    stack.forEach((e)=>{
+        sum +=e
+    })
+    return sum
+};
