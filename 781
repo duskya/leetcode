@@ -1,0 +1,19 @@
+/**
+ * @param {number[]} answers
+ * @return {number}
+ */
+var numRabbits = function(answers) {
+    const count = new Map();
+    for (const y of answers) {
+        // console.log(y)
+        count.set(y, (count.get(y) || 0) + 1);
+    }
+    console.log(count)
+    let ans = 0;
+    for (const [y, x] of count.entries()) {
+        console.log(y,x)
+        ans += Math.ceil((x) / (y + 1)) * (y + 1);
+        console.log(ans,'---')
+    }
+    return ans;
+};
